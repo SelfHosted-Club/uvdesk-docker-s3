@@ -1,5 +1,5 @@
 # uvdesk-docker-s3
-Non-privileged dockerised version of uvdesk with S3 funtionality for assets
+Non-privileged dockerised version of uvdesk ( https://github.com/uvdesk/community-skeleton )with S3 funtionality for assets
 
 Prebuilt docker images can be found at https://hub.docker.com/r/tivini/uvdesk/tags - choose the ones with the s3 in the tag name.
 s3-amd64 for pretty much all desktops and servers.
