@@ -30,6 +30,20 @@ else
     echo -e "Notice: No S3 defined, proceeding without";
 fi
 
+# Check if require login is set to true
+if [[ "$REQUIRE_LOGIN" == "TRUE" ]]; then
+	file_path="/var/www/uvdesk/vendor/uvdesk/support-center-bundle/Resources/config/routes/public.yaml"
+	line_number=3
+
+	# Change the line as according to https://forums.uvdesk.com/topic/2027/require-login/2?_=1683106194155
+	new_line='    controller: Webkul\\UVDesk\\SupportCenterBundle\\Controller\\Customer::login'
+	# Use sed to replace the line in the file
+	sed -i "${line_number}s/.*/${new_line}/" "$file_path"
+	
+	# Run console command to apply the setting
+	php /var/www/uvdesk/bin/console c:c
+fi
+
 # Step down from sudo to uvdesk
 apachectl -D FOREGROUND
 su uvdesk
